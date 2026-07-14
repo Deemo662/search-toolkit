@@ -8,16 +8,27 @@
 
 ```bash
 # 多源搜索（推荐，一次搜4个来源）
-python3 scripts/search_pipeline.py multi "AI agent 信息检索 最新进展"
+python3 scripts/search_pipeline.py multi "AI agent 最新进展"
 
 # 搜学术论文
 python3 scripts/search_pipeline.py academic "transformer architecture"
 
 # 搜 GitHub 开源项目
 python3 scripts/search_pipeline.py github "RAG agent"
+```
 
-# 只搜网页（需要额外配置）
-python3 scripts/search_pipeline.py web "关键词"
+## 网页搜索说明
+
+**需要配置 API Key 才能用**，不配 Key 的话网页搜索不可用（直接用 Codex 默认搜索代替）。
+其他功能（学术、GitHub、本地代码、多源）装好即用，不需要任何配置。
+
+需要网页搜索的话 → 申请免费 Key：
+1. 打开 https://console.volcengine.com/search-infinity/api-key
+2. 用抖音/头条账号登录，创建 API Key（每月 500 次免费）
+3. 设到环境变量：
+
+```bash
+export WEB_SEARCH_API_KEY="你的Key"
 ```
 
 ## 安装步骤

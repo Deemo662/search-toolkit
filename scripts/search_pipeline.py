@@ -182,8 +182,8 @@ def search_web(query: str, count: int = 5) -> list:
     """网页搜索 — 用 byted-web-search（火山引擎，500 次/月免费，之后按量计费）"""
     api_key = os.environ.get("WEB_SEARCH_API_KEY")
     if not api_key:
-        return [{"source": "网页搜索", "warning": "WEB_SEARCH_API_KEY 未设置；免费选项见 SOP 附录 Brave Search"},
-                {"source": "网页搜索", "error": "未配置 API Key"}]
+        return [{"source": "网页搜索", "note": "未配 Key，网页搜索不可用。用默认搜索代替。"},
+                {"source": "网页搜索", "tip": "其他功能（学术/GitHub/代码/多源）不受影响，可直接使用。"}]
 
     web_search_script = "/Users/mumu/.agents/skills/byted-web-search/scripts/web_search.py"
     if not os.path.exists(web_search_script):
@@ -247,7 +247,10 @@ def search_multi(query: str) -> dict:
             continue
         for item in items[:5]:
             if "error" in item:
-                print(f"  [ERROR] {item['error']}")
+                print(f"  [{item.get('source','?')}] {item['error']}")
+                continue
+            if "note" in item or "tip" in item:
+                print(f"  {item.get('note','')} {item.get('tip','')}")
                 continue
             if "title" in item:
                 print(f"  {item['title']}")
