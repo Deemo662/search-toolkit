@@ -186,22 +186,24 @@ bili search "query" --type video -n 5
 
 **动作**：
 
-1. **保存到知识库**：
-   mkdir -p ~/Documents/Codex/_我的记忆/搜索沉淀/
-   cat synthesis.md >> ~/Documents/Codex/_我的记忆/搜索沉淀/TOPIC.md
+1. **保存到本地文件**（最低要求）：
+   ```bash
+   cat synthesis.md >> ./搜索沉淀_TOPIC.md
+   ```
 
-2. **跨 Agent 注册**（在 Codex 任务中）：
-   mkdir -p ~/.agent-memory/outputs/TASK_ID/codex/
-   cp synthesis.md ~/.agent-memory/outputs/TASK_ID/codex/
-   然后调用 add_comment 或 submit_artifact 注册
+2. **整理到自己的知识库**（可选，推荐）：
+   - Obsidian 用户 -> 放到 Obsidian vault 的对应目录
+   - Notion 用户 -> 导入到 Notion 知识库
+   - 飞书用户 -> 保存到飞书文档或云空间
+   - 什么都不用 -> 留在工作目录的搜索沉淀_*.md 文件里
 
-3. **重要知识提炼** -- 结构化可复用知识提取成独立笔记
+3. **重要知识提炼** -- 把这次搜到的可复用知识提取成独立笔记
+   - 不要只留原始搜索结果，把"能用的是什么、怎么用"写清楚
+   - 方便以后直接翻笔记而不是重新搜一遍
 
-**完成标准**：搜索结果已持久化保存，必要时已注册到 agent-memory
+**完成标准**：搜索结果已保存到可再次找到的地方
 
----
-
-## 附录 A：工具安装清单
+---## 附录 A：工具安装清单
 
 ### pip3 可安装
 
